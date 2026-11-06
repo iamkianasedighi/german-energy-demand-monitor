@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.DS_Store
+
+# Runtime data; the small, verified report snapshot lives under results/.
+/data/cache/
+/outputs/*
+!/outputs/.gitkeep
+*.pending
