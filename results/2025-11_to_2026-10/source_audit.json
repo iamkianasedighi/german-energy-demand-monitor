@@ -1,0 +1,58 @@
+{
+  "verdict": "PASS",
+  "source": "Bundesnetzagentur SMARD; fetched live without project cache",
+  "run_utc": "2026-11-05T22:43:27.961613+00:00",
+  "source_period": {
+    "start": "2025-11-01",
+    "end_exclusive": "2026-11-01"
+  },
+  "hour_count": 8760,
+  "expected_source_rows": 52560,
+  "fresh_source_rows": 52560,
+  "compared_source_rows": 52560,
+  "coverage": {
+    "grid_load": {
+      "records": 8760,
+      "missing_timestamps": 0,
+      "null_readings": 0,
+      "weekly_files": 53
+    },
+    "solar": {
+      "records": 8760,
+      "missing_timestamps": 0,
+      "null_readings": 0,
+      "weekly_files": 53
+    },
+    "wind_onshore": {
+      "records": 8760,
+      "missing_timestamps": 0,
+      "null_readings": 0,
+      "weekly_files": 53
+    },
+    "wind_offshore": {
+      "records": 8760,
+      "missing_timestamps": 0,
+      "null_readings": 0,
+      "weekly_files": 53
+    },
+    "residual_official": {
+      "records": 8760,
+      "missing_timestamps": 0,
+      "null_readings": 0,
+      "weekly_files": 53
+    },
+    "price_eur_mwh": {
+      "records": 8760,
+      "missing_timestamps": 0,
+      "null_readings": 0,
+      "weekly_files": 53
+    }
+  },
+  "source_and_derived_differences": 0,
+  "derived_differences": 0,
+  "negative_price_hours_from_fresh_data": 462,
+  "negative_price_hours_in_bottom_residual_quartile": 462,
+  "residual_quartile_gw": 16.867277499999997,
+  "evidence_files": 324,
+  "float_abs_tolerance": 1e-06
+}

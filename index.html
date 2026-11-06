@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A Python and SQLite analysis of German electricity demand, renewables and day-ahead wholesale prices from SMARD.">
+  <title>German Electricity Market Monitor</title>
+  <style>
+    :root {color-scheme:light;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#242424;background:#fafafa}
+    * {box-sizing:border-box} body {margin:0} main {max-width:1030px;margin:0 auto;padding:50px 24px 80px}
+    h1 {font-size:clamp(2.25rem,5.1vw,3.7rem);line-height:1.08;font-weight:640;letter-spacing:-.048em;margin:12px 0 20px}
+    h2 {font-size:1.4rem;font-weight:650;margin:48px 0 14px;letter-spacing:-.02em}
+    p {line-height:1.7;margin:10px 0;max-width:80ch}
+    .eyebrow,.meta {font-size:.84rem;letter-spacing:.055em;color:#666}
+    .lead {font-size:1.18rem;color:#484848;max-width:790px}
+    .metrics {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:34px 0 36px}
+    .metric {border:1px solid #d9d9d9;border-radius:8px;background:white;padding:22px 18px}
+    .metric strong {display:block;font-size:clamp(1.8rem,3.4vw,2.8rem);font-weight:660;letter-spacing:-.045em}
+    .metric span {color:#5c5c5c;font-size:.9rem;line-height:1.5;display:block;margin-top:7px}
+    figure {margin:25px 0;background:#fff;border:1px solid #ddd;border-radius:8px;overflow:hidden}
+    figure img {display:block;width:100%;height:auto} figcaption {font-size:.88rem;color:#555;line-height:1.65;padding:10px 20px 17px}
+    .two {display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .two figure {margin:0}
+    .note {border-left:3px solid #6a6a6a;padding:1px 18px;margin:26px 0;background:#f1f1f1}
+    a {color:#222;text-decoration:underline;text-underline-offset:4px}
+    .links {display:flex;flex-wrap:wrap;gap:14px 24px;margin:32px 0}
+    footer {border-top:1px solid #d8d8d8;padding-top:18px;margin-top:54px;color:#646464;font-size:.85rem}
+    @media(max-width:700px){main{padding:30px 15px 55px}.metrics,.two{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">PYTHON · SQL · ETL · MARKET DATA</div>
+  <h1>German Electricity Market Monitor</h1>
+  <p class="lead">When does electricity become cheaper on the day-ahead market, and what do wind, solar and residual demand have to do with it? I joined one year of SMARD load and generation data with wholesale prices to investigate.</p>
+  <p class="meta">Germany · 1 Nov 2025–31 Oct 2026 · 8,760 hourly intervals · all six source series independently checked</p>
+
+  <div class="metrics">
+    <div class="metric"><strong>462</strong><span>hours with negative day-ahead prices; all were in the lowest residual-load quartile</span></div>
+    <div class="metric"><strong>21.1 pp</strong><span>higher negative-price frequency in the lowest quartile than in the remaining hours (95% interval: 17.6–24.6 pp)</span></div>
+    <div class="metric"><strong>≈€116</strong><span>median 20:00 minus 13:00 wholesale price spread per MWh, across 365 matched dates</span></div>
+  </div>
+
+  <h2>Prices and residual demand move together</h2>
+  <p>All 462 negative-price hours fell below the year's 25th-percentile residual-load threshold (16.9 GW). Price and residual load also had a Spearman rank correlation of 0.69. The comparison describes the market, not a causal effect.</p>
+  <figure>
+    <img src="results/2025-11_to_2026-10/figures/04_market_context.png" alt="Hexagonal density chart of hourly day-ahead wholesale price in euros per MWh against calculated residual load in GW" width="1350" height="675">
+    <figcaption>Each hexagon summarizes observed hourly prices and residual load. The dashed line marks zero price.</figcaption>
+  </figure>
+
+  <h2>What the time-of-day comparison shows</h2>
+  <p>On 90% of the 365 days with prices at both hours, 20:00 was more expensive than 13:00. The median difference was about €116/MWh. These hours have the highest and lowest median prices across clock hours in the observed year.</p>
+  <div class="note"><p>For a company with shiftable electricity use, this could justify checking its contract and operational constraints. It is not a calculation of achievable cost savings: wholesale prices do not equal the price paid by every customer.</p></div>
+
+  <h2>Summer midday stands apart</h2>
+  <p>At 14:00 in summer, 75% of observations were in the year's bottom 10% of residual load, versus roughly 3% in winter. This seasonal heatmap uses a stricter threshold (3.5 GW) than the price comparison; the two cutoffs answer different questions.</p>
+  <figure>
+    <img src="results/2025-11_to_2026-10/figures/02_seasonal_low_hours.png" alt="Heatmap of the percentage of each season and local clock-hour group falling in the lowest annual decile of residual load" width="1350" height="570" loading="lazy">
+    <figcaption>Percentage of observed hours below the same full-year 10th-percentile threshold, grouped by Berlin-local hour and season.</figcaption>
+  </figure>
+
+  <h2>The year at a glance</h2>
+  <div class="two">
+    <figure>
+      <img src="results/2025-11_to_2026-10/figures/01_daily_peaks.png" alt="Daily maximum grid load and daily maximum residual load in gigawatts" loading="lazy">
+      <figcaption>Daily maxima in GW. Grid load and residual load may peak at different hours.</figcaption>
+    </figure>
+    <figure>
+      <img src="results/2025-11_to_2026-10/figures/03_monthly_energy.png" alt="Monthly mean complete-day electricity load and combined wind and solar production in gigawatt-hours per day" loading="lazy">
+      <figcaption>Monthly mean daily energy in GWh/day, adjusted for differing month lengths.</figcaption>
+    </figure>
+  </div>
+
+  <div class="links">
+    <a href="results/2025-11_to_2026-10/report.html">Full numerical report</a>
+    <a href="results/2025-11_to_2026-10/source_audit.json">Independent source audit</a>
+    <a href="results/2025-11_to_2026-10/report.md">Download Markdown report</a>
+  </div>
+  <footer>Data: Bundesnetzagentur / SMARD (CC BY 4.0). DE load and generation; DE-LU wholesale day-ahead prices. Independent analysis of historical observations.</footer>
+</main>
+</body>
+</html>

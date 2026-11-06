@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Full report — German Electricity Market Monitor</title>
+<style>
+:root{color-scheme:light;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#252525;background:#fafafa}
+*{box-sizing:border-box} body{margin:0} main{margin:auto;max-width:900px;padding:38px 20px 80px}
+h1{font-size:2rem;line-height:1.2;letter-spacing:-.035em} h2{font-size:1.35rem;margin-top:40px}
+p,li{line-height:1.68} a{color:#222;text-underline-offset:4px}
+img{width:100%;height:auto;max-width:100%;margin:12px 0 18px;background:white;border:1px solid #ddd;border-radius:5px}
+table{border-collapse:collapse;width:100%;font-size:.92rem;margin:18px 0}
+th,td{border-bottom:1px solid #ddd;padding:9px 11px;text-align:left} th{background:#f0f0f0}
+tr:nth-child(even){background:#f7f7f7} code{padding:2px 4px;background:#eee}
+@media(max-width:600px){main{padding:25px 12px 50px}table{font-size:.78rem}th,td{padding:7px 4px}}
+</style></head><body><main><nav><a href="../../index.html">Project overview</a></nav><h1>German electricity demand, renewables and wholesale prices</h1>
+<p><strong>Period:</strong> 2025-11-01 to 2026-11-01 (exclusive end, Berlin time)<br />
+<strong>Data:</strong> Bundesnetzagentur SMARD, German load and generation (DE) and DE-LU day-ahead prices</p>
+<h2>Decision</h2>
+<p>A flexible electricity consumer could examine whether some operations can be moved to historically lower-priced midday hours. Check its tariff, equipment constraints and forward prices before acting.</p>
+<h2>Main findings</h2>
+<ul>
+<li>The lowest <strong>10%</strong> of observed residual-load hours are at or below <strong>3.5 GW</strong>.
+The heatmap uses this threshold to highlight seasonal and hourly patterns.
+The price comparison uses the broader lowest <strong>25%</strong> to retain enough hours for a rate comparison.</li>
+<li>Highest observed grid load in any hour: <strong>78.2 GW</strong>.</li>
+<li>Source coverage: <strong>8,760/8,760</strong> complete
+load/generation hours (<strong>100.0%</strong>); <strong>365</strong> complete Berlin-local days.</li>
+</ul>
+<h2>Low-residual-load hours by season</h2>
+<p>Percentages are calculated among observed hours <strong>at that clock time in that season</strong>.</p>
+<table>
+<thead>
+<tr>
+  <th>Season</th>
+  <th>Three most frequently low-residual hours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Winter</td>
+  <td>03:00 (3%), 14:00 (3%), 02:00 (2%)</td>
+</tr>
+<tr>
+  <td>Spring</td>
+  <td>13:00 (42%), 14:00 (41%), 12:00 (40%)</td>
+</tr>
+<tr>
+  <td>Summer</td>
+  <td>14:00 (75%), 13:00 (74%), 12:00 (68%)</td>
+</tr>
+<tr>
+  <td>Autumn</td>
+  <td>12:00 (27%), 13:00 (27%), 14:00 (27%)</td>
+</tr>
+</tbody>
+</table>
+<h2>Monthly context</h2>
+<p>Monthly values below are normalized per complete day rather than summed over months of different lengths.</p>
+<table>
+<thead>
+<tr>
+  <th>Month</th>
+  <th style="text-align:right">Grid load (GWh/day)</th>
+  <th style="text-align:right">Wind + solar generation (GWh/day)</th>
+  <th style="text-align:right">Complete days</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>2025-11</td>
+  <td style="text-align:right">1,382.3</td>
+  <td style="text-align:right">496.0</td>
+  <td style="text-align:right">30</td>
+</tr>
+<tr>
+  <td>2025-12</td>
+  <td style="text-align:right">1,364.7</td>
+  <td style="text-align:right">561.6</td>
+  <td style="text-align:right">31</td>
+</tr>
+<tr>
+  <td>2026-01</td>
+  <td style="text-align:right">1,493.3</td>
+  <td style="text-align:right">593.4</td>
+  <td style="text-align:right">31</td>
+</tr>
+<tr>
+  <td>2026-02</td>
+  <td style="text-align:right">1,458.7</td>
+  <td style="text-align:right">620.2</td>
+  <td style="text-align:right">28</td>
+</tr>
+<tr>
+  <td>2026-03</td>
+  <td style="text-align:right">1,308.5</td>
+  <td style="text-align:right">604.4</td>
+  <td style="text-align:right">31</td>
+</tr>
+<tr>
+  <td>2026-04</td>
+  <td style="text-align:right">1,227.1</td>
+  <td style="text-align:right">658.2</td>
+  <td style="text-align:right">30</td>
+</tr>
+<tr>
+  <td>2026-05</td>
+  <td style="text-align:right">1,149.7</td>
+  <td style="text-align:right">599.3</td>
+  <td style="text-align:right">31</td>
+</tr>
+<tr>
+  <td>2026-06</td>
+  <td style="text-align:right">1,206.3</td>
+  <td style="text-align:right">650.2</td>
+  <td style="text-align:right">30</td>
+</tr>
+<tr>
+  <td>2026-07</td>
+  <td style="text-align:right">1,209.5</td>
+  <td style="text-align:right">713.8</td>
+  <td style="text-align:right">31</td>
+</tr>
+<tr>
+  <td>2026-08</td>
+  <td style="text-align:right">1,142.9</td>
+  <td style="text-align:right">654.7</td>
+  <td style="text-align:right">31</td>
+</tr>
+<tr>
+  <td>2026-09</td>
+  <td style="text-align:right">1,227.4</td>
+  <td style="text-align:right">669.6</td>
+  <td style="text-align:right">30</td>
+</tr>
+<tr>
+  <td>2026-10</td>
+  <td style="text-align:right">1,290.4</td>
+  <td style="text-align:right">632.4</td>
+  <td style="text-align:right">31</td>
+</tr>
+</tbody>
+</table>
+<p>Low-residual-load hour counts use the same full-period bottom-decile threshold:</p>
+<table>
+<thead>
+<tr>
+  <th>Month</th>
+  <th style="text-align:right">Low hours</th>
+  <th style="text-align:right">Observed core hours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>2025-11</td>
+  <td style="text-align:right">0</td>
+  <td style="text-align:right">720</td>
+</tr>
+<tr>
+  <td>2025-12</td>
+  <td style="text-align:right">2</td>
+  <td style="text-align:right">744</td>
+</tr>
+<tr>
+  <td>2026-01</td>
+  <td style="text-align:right">22</td>
+  <td style="text-align:right">744</td>
+</tr>
+<tr>
+  <td>2026-02</td>
+  <td style="text-align:right">5</td>
+  <td style="text-align:right">672</td>
+</tr>
+<tr>
+  <td>2026-03</td>
+  <td style="text-align:right">14</td>
+  <td style="text-align:right">743</td>
+</tr>
+<tr>
+  <td>2026-04</td>
+  <td style="text-align:right">114</td>
+  <td style="text-align:right">720</td>
+</tr>
+<tr>
+  <td>2026-05</td>
+  <td style="text-align:right">121</td>
+  <td style="text-align:right">744</td>
+</tr>
+<tr>
+  <td>2026-06</td>
+  <td style="text-align:right">109</td>
+  <td style="text-align:right">720</td>
+</tr>
+<tr>
+  <td>2026-07</td>
+  <td style="text-align:right">161</td>
+  <td style="text-align:right">744</td>
+</tr>
+<tr>
+  <td>2026-08</td>
+  <td style="text-align:right">147</td>
+  <td style="text-align:right">744</td>
+</tr>
+<tr>
+  <td>2026-09</td>
+  <td style="text-align:right">94</td>
+  <td style="text-align:right">720</td>
+</tr>
+<tr>
+  <td>2026-10</td>
+  <td style="text-align:right">87</td>
+  <td style="text-align:right">745</td>
+</tr>
+</tbody>
+</table>
+<h2>Wholesale-price findings</h2>
+<ul>
+<li>Valid matched price and load hours: <strong>8,760</strong> (100.0% of complete-load hours).</li>
+<li>Negative day-ahead price hours: <strong>462</strong>;
+<strong>462</strong> fell in the lowest residual-load quartile.</li>
+<li>In the lowest residual-load quartile (≤16.9 GW),
+negative-price frequency: <strong>21.1%</strong>; remaining hours:
+<strong>0.0%</strong>.</li>
+<li>Rate difference: <strong>+21.1 percentage points</strong>
+(95% day-block bootstrap interval
+<strong>[+17.6, +24.6] percentage points</strong>).</li>
+<li>Descriptive Spearman correlation of residual load and price: <strong>0.69</strong>.</li>
+</ul>
+<p>Across <strong>365</strong> days with prices at both hours, the median 20:00 minus 13:00 price difference was <strong>approximately €116/MWh</strong> (20:00 was more expensive on 90% of those days). The hours are selected as the highest and lowest median-price clock hours in this observed period.</p>
+<p>The wholesale-price spread is not a realized saving; tariff terms and operational flexibility determine whether shifting demand is useful.</p>
+<h2>Data checks</h2>
+<ul>
+<li>Missing measurements: grid_load=0, solar=0, wind_onshore=0, wind_offshore=0, residual_official=0, price_eur_mwh=0.</li>
+<li>Reconstructed vs published residual differs by more than 2% of grid load in
+<strong>0/8760</strong> comparable hours.</li>
+<li>Missing source values remain missing; genuine zeros remain zeros.</li>
+</ul>
+<h2>Charts</h2>
+<p><img src="figures/01_daily_peaks.png" alt="Daily peaks" /></p>
+<p><img src="figures/02_seasonal_low_hours.png" alt="Low residual load by season and hour" /></p>
+<p><img src="figures/03_monthly_energy.png" alt="Mean daily grid energy and renewable generation by month" /></p>
+<p><img src="figures/04_market_context.png" alt="Day-ahead wholesale price versus residual load" /></p>
+<h2>Scope</h2>
+<p>Residual load here is grid load minus photovoltaic and onshore/offshore wind generation;
+this is not a direct measurement of dispatchable supply requirements. Prices are
+DE-LU day-ahead wholesale values; since October 2025 the hourly price is the
+average of four quarter-hour prices. The analysis describes historical observations
+and does not establish causation.</p>
+<p>Data source: <strong>Bundesnetzagentur, SMARD</strong> — CC BY 4.0. https://www.smard.de/en/datennutzung</p>
+</main>
+</body></html>
