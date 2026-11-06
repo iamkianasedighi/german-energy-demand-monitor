@@ -1,5 +1,7 @@
 # German Electricity Market Monitor
 
+**[View the live project report](https://iamkianasedighi.github.io/german-energy-demand-monitor/)**
+
 I built a Python pipeline to find out when Germany's grid load is low relative to wind and solar generation, and whether those hours are also cheaper on the day-ahead electricity market.
 
 **Data:** SMARD / Bundesnetzagentur · 1 Nov 2025–31 Oct 2026 · 8,760 hourly observations · DE load and generation + DE-LU prices.
@@ -48,7 +50,5 @@ python scripts/verify_smard_independently.py
 The raw table uses `(timestamp_ms, metric)` as its key; the hourly table uses UTC timestamps. Berlin dates are derived for daily and seasonal analysis, including daylight-saving changes. Missing values are not replaced with zeros. The comparison of negative-price rates uses a day-block bootstrap rather than treating adjacent hours as independent observations. The pipeline also runs in GitHub Actions for tests.
 
 **Stack:** Python, Pandas, NumPy, SciPy, requests, SQLite, Matplotlib, pytest, GitHub Actions.
-
-The static `index.html` is the project overview for GitHub Pages. To publish it, enable **Settings → Pages → Deploy from a branch → main / (root)** in your repository. The site URL will be available after GitHub completes deployment.
 
 **Source:** [SMARD / Bundesnetzagentur](https://www.smard.de/en/datennutzung), CC BY 4.0. Market prices are wholesale DE-LU day-ahead prices. Neither the association with residual load nor the illustrative time shift establishes a causal effect or realized financial savings.
